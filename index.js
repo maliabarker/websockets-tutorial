@@ -11,6 +11,9 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
+    // emits connection message to all users
+    io.sockets.emit('connect message', socket.id);
+    
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
